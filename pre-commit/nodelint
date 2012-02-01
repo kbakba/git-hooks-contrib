@@ -1,0 +1,16 @@
+#!/bin/sh -e
+case "${1}" in
+    --about )
+        echo "check *.js files using nodelint"
+        ;;
+    * )
+        if [ -e .nodelint ]; then
+            CONFIG="--config .nodelint"
+        fi
+
+        for FILE in $(git diff --cached --name-only HEAD | grep -E '\.js'); do
+            echo nodelint $CONFIG $FILE
+            nodelint $CONFIG $FILE
+        done
+        ;;
+esac

@@ -1,0 +1,17 @@
+#!/bin/sh -e
+case "${1}" in
+    --about )
+        echo "run mr update if .mrconfig changed"
+        ;;
+    * )
+        CONFIG=".mrconfig"
+
+        if [ $3 -eq 1 -a -f $CONFIG ]; then
+            CONFIG_CHANGED=$(git diff --name-only $1 $2 -- $CONFIG)
+            if [ $CONFIG_CHANGED ]; then
+                mr --path update
+            fi
+        fi
+        ;;
+esac
+

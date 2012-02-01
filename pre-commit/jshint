@@ -1,0 +1,16 @@
+#!/bin/sh -e
+case "${1}" in
+    --about )
+        echo "check *.js files using jshint"
+        ;;
+    * )
+        if [ -e .jshintrc ]; then
+            CONFIG="--config .jshintrc"
+        fi
+
+        for FILE in $(git diff --cached --name-only HEAD | grep -E '\.js'); do
+            echo jshint $FILE $CONFIG
+            jshint $FILE $CONFIG
+        done
+        ;;
+esac
