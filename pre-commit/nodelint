@@ -8,7 +8,7 @@ case "${1}" in
             CONFIG="--config .nodelint"
         fi
 
-        for FILE in $(git diff --cached --name-only HEAD | grep -E '\.js'); do
+        for FILE in $(git diff --cached --diff-filter=ACMTR --name-only HEAD | grep -E '\.js'); do
             echo nodelint $CONFIG $FILE
             nodelint $CONFIG $FILE
         done
