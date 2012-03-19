@@ -1,0 +1,1 @@
+Git hooks for [git-hooks](https://github.com/icefox/git-hooks) script.
