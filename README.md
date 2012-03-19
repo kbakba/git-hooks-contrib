@@ -1,1 +1,1 @@
-Git hooks for [git-hooks](https://github.com/icefox/git-hooks) script.
+Git hooks collection for [git-hooks](https://github.com/icefox/git-hooks) script.
